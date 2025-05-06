@@ -5,7 +5,6 @@ import terser from "@rollup/plugin-terser";
 import resolve from "@rollup/plugin-node-resolve";
 import livereload from "rollup-plugin-livereload";
 import css from "rollup-plugin-css-only";
-import html from "@web/rollup-plugin-html";
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -39,11 +38,6 @@ export default {
     file: "public/build/bundle.js",
   },
   plugins: [
-    html({
-      input: "src/main.js",
-      transformHtml: (html) =>
-        html.replace("<head>", '<head><base href="/my-portfolio/">'),
-    }),
     svelte({
       compilerOptions: {
         // enable run-time checks when not in production
