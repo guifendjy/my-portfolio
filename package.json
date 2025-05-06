@@ -6,12 +6,15 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
+    "predeploy": "rollup -c",
+    "deploy": "gh-pages -d public",
     "start": "sirv public --no-clear --host"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-terser": "^0.4.4",
+    "gh-pages": "^6.3.0",
     "rollup": "^4.40.1",
     "rollup-plugin-css-only": "^4.5.2",
     "rollup-plugin-livereload": "^2.0.5",
