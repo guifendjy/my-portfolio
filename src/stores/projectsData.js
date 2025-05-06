@@ -9,7 +9,7 @@ const projects = [
     tools: ["javascript"],
     demo: "/", // link to a website(docs or use)
     repo: "https://github.com/guifendjy/dom_master", // link to code on github
-    svgSrc: "/assets/icons/dom.svg",
+    svgSrc: "assets/icons/dom.svg",
   },
 
   {
@@ -20,7 +20,7 @@ const projects = [
     tools: ["Vite", "Dom Master(v1.2)", "javascript"],
     demo: "https://guifendjy.github.io/voice_recorder/", // link to a website(docs or use)
     repo: "https://github.com/guifendjy/voice_recorder", // link to code on github
-    svgSrc: "/assets/icons/recorder.svg",
+    svgSrc: "assets/icons/recorder.svg",
   },
 ];
 
