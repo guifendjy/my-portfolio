@@ -1,0 +1,187 @@
+:root {
+  --bg-color: rgba(255, 255, 255, 0.511);
+  --text-color: #282828;
+  --border-color: #282828;
+
+  --primary-color: purple;
+  --secondary-color: #d34dee7a;
+  --transition-duration: 0.3s;
+
+  --vh-size: 100svh;
+}
+
+[data-theme="dark"] {
+  --bg-color: #282828;
+  --text-color: rgb(224, 224, 224);
+  --border-color: lightgray;
+
+  --primary-color: #d34dee;
+  --text-shadow: 1px 1px 5px #d34dee7a;
+}
+
+html,
+body {
+  margin: 0;
+  position: relative;
+  height: var(--vh-size);
+  width: 100%;
+
+  font-size: clamp(0.95rem, 2vw, 1.12rem);
+  line-height: 1.33;
+
+  transition: background-color var(--transition-duration) ease,
+    color var(--transition-duration) ease;
+}
+
+.container {
+  margin: 0.5em 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  /* rs mess with color of links */
+  color: var(--text-color);
+}
+
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-padding: 0.4em 0;
+  box-sizing: border-box;
+
+  background: none;
+  background-color: lightgray;
+  border: lightgray;
+  padding: 0.2em 0.3em;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+.btn {
+  position: relative;
+  overflow: hidden; /* Ensures the ripple stays within the button */
+  display: inline-block;
+  outline: none;
+  margin-bottom: 0.3em;
+  padding: 0.3em 0.5em;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Ripple effect */
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(0, 0, 0, 0.32);
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease, opacity 0.4s ease;
+}
+
+/* On button active */
+.btn:active::before {
+  width: 200%;
+  height: 200%;
+  opacity: 1;
+  transition: width 0.2s ease-in-out, height 0.2s ease-in-out,
+    opacity 0.4s ease-in-out;
+}
+
+.btn.dark:hover {
+  background-color: rgba(from var(--bg-color) 25% 25% 25%);
+}
+
+.btn.light:hover {
+  background-color: rgb(from var(--bg-color) 90% 90% 90%);
+}
+
+button {
+  /* disable zoom if pressed twice */
+  touch-action: manipulation;
+}
+.btn svg {
+  fill: var(--border-color);
+}
+
+.btn,
+svg {
+  transition: background-color var(--transition-duration) ease,
+    fill var(--transition-duration) ease;
+}
+.tooltip {
+  position: relative;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+
+  text-align: center;
+  border-radius: 5px;
+  padding: 0.3em 0.4em;
+
+  font-size: 1rem;
+  position: absolute;
+
+  top: -2em;
+  right: -0.5em;
+  opacity: 0;
+  transition: opacity var(--transition-duration) ease-in-out;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip target */
+.tooltip:hover .tooltiptext {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* scale target an surrounding on hover */
+.g-scale {
+  scale: 1;
+  margin: 0;
+  transition: scale 0.2s ease-in, margin 0.4s ease-in;
+}
+
+.g-scale:hover {
+  scale: 1.5;
+  margin-top: -6px;
+}
+
+.g-scale:hover + .g-scale,
+.g-scale:has(+ .g-scale:hover) {
+  scale: 1.2;
+}
+
+.glass {
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
