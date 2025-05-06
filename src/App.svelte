@@ -2,17 +2,16 @@
 	import Router from "svelte-spa-router";
 	import Home from "./routes/Home.svelte"
 	import Projects from './routes/Projects.svelte';
-	import Resume from './routes/Resume.svelte';
 	import NotFound from "./routes/NotFound.svelte";
 	import Navbar from "./components/Navbar.svelte";
+	import Resume from "./routes/Resume.svelte";
 
 	import {theme} from "./stores/theme"
 
 	const routes = {
 		"/": Home,
 		"/projects": Projects, // this will list all projects
-		// "/projects/:id": Projects, // will use this to show project details
-		"/resume": Resume,
+		"/resume": Resume, 
 		"*": NotFound
 	}
 
@@ -49,6 +48,7 @@
 
 	.main-content{
 		flex: 1;
+		margin-top: 50px;
 	}
 	footer{
 		font-family: Montserrat;
@@ -64,12 +64,6 @@
 		padding: .5em;
 	}
 
-	    .glass{
-        border-radius: 5px;
-        background-color: rgba(255, 255, 255, 0.06);
-        backdrop-filter: blur(10px);
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    }
 
 	@keyframes rotateY{
 		from{

@@ -8,24 +8,23 @@
     <div class="head">
         <img class="icon" src={project.svgSrc} alt="logo">
         <h2 class="title">{project.title}</h2>
-        <span class="subtitle">{project.subtitle}</span>
     </div>
     <div class="body">
         <p>{project.description}</p>
         <ul class="tools">
-            {#each project.tools as tool }
-                {#if tool.name}
-                    <li>{tool.name}</li>
+            {#each project.tools as tool}
+                {#if tool}
+                    <li>{tool}</li>
                 {/if}
             {/each}
         </ul>
     </div>
     <div class="footer">
-        <a href={project.demo} target="_blank" rel="noopener noreferrer">
+        <a class="btn {$theme ? 'dark' : "light"}" href={project.demo} target="_blank" rel="noopener noreferrer">
             <span>demo</span>
             <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </a>
-        <a href={project.repo} target="_blank" rel="noopener noreferrer">
+        <a class="btn {$theme ? 'dark' : "light"}" href={project.repo} target="_blank" rel="noopener noreferrer">
             <span>code</span>
             <i class="fa-solid fa-code"></i>
         </a>
@@ -47,7 +46,6 @@
 
 .glass.light{
     border: 1px solid #e1e1e1 ;
-
 }
 
 .card {
@@ -82,8 +80,8 @@
 
 
 .icon {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   object-fit: cover;
 }
 
@@ -91,14 +89,10 @@
   font-size: 1.25rem;
   font-weight: bold;
   margin: 0;
+  padding: 0;
   color: var(--text-color);
 }
 
-.subtitle {
-  font-size: 0.9rem;
-  color: var(--text-color);
-
-}
 
 .body {
   height: 100%;
@@ -127,12 +121,12 @@
 }
 
 .tools li {
-text-align: center;
+  text-align: center;
   background-color: #f4f4f4;
-  padding: 0.3rem 0.8rem;
-  font-size: 0.83rem;
+  padding: 0.2em 0.5em;
+  font-size: 0.78rem;
   color: #555;
-  border-radius: 8px;
+  border-radius: 5px;
 }
 
 .footer {
@@ -142,30 +136,30 @@ text-align: center;
   border-top: 1px solid #f0f0f0;
 }
 .dark .footer{
-  border-top: 1px solid rgba(120, 120, 120, 0.722);
-
-}
-.footer a {
-    padding: .2rem;
-  text-decoration: none;
-  color: var( --primary-color);
-  font-weight: bold;
-  font-size: 0.95rem;
-  transition: color 0.3s;
+  border-top: 1px solid rgba(29, 29, 29, 0.461);
 }
 
-.footer a{
-    text-align: center;
+.btn{
+  border: none;
+  font-size: .85rem;
 }
 
-.footer a span{
-    margin-right: .3em;
+.btn.dark{
+  /* background-color: rgba(35, 35, 35, 0.389); */
+  background: none;
+}
+.btn.dark:hover{
+  background-color: rgba(35, 35, 35, 0.3);
 }
 
-
-.footer a:hover span{
-  text-decoration: underline;
+.btn.light{
+  border: 1px solid  #e1e1e1;
 }
+
+.btn span{
+  margin-right: .4em;
+}
+
 
 @media (max-width: 550px) {
   .card {
@@ -174,16 +168,6 @@ text-align: center;
 
   .head {
     flex-direction: column;
-    text-align: center;
-  }
-
-  .icon {
-    margin-bottom: 0.5rem;
-  }
-
-  .footer {
-    flex-direction: column;
-    gap: 0.5rem;
     text-align: center;
   }
 }
